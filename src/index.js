@@ -6,11 +6,27 @@
 
 // createElement("element name",{attributes},"contents")
 import React from "react";
-import ReactDOM from "react-dom";
-const child1 = React.createElement("p", {}, "This is child1");
-const child2 = React.createElement("p", {}, "This is child2");
+import ReactDOM from "react-dom/client";
+const isMorning = true;
+const morningText = "good morning user";
+const afternoonText = "afternoon user";
 
-// const div = React.createElement("div", { className: "text" }, [child1, child2]);
-const div = <div>Hello React js developer</div>;//jsx
+const morningElement = (
+  <div>
+    {morningText} <span>it is 8AM</span>
+  </div>
+);
+const afternoonElement = (
+  <div>
+    {afternoonText} <span>it is 6PM</span>
+  </div>
+);
+
+const greetingElement = isMorning ? morningElement : afternoonElement;
+
+const GreetingComponent = function () {
+  return <>{greetingElement} i am inside components</>;
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(div);
+root.render(<GreetingComponent />);
